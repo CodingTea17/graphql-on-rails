@@ -1,24 +1,54 @@
-# README
+# GraphQL on Rails (graphql-movies  🎥)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Introduction
+This simple project demonstrates basic db querying utilizing GraphQL.
 
-Things you may want to cover:
+### Setup
+1. `clone https://github.com/CodingTea17/graphql-on-rails` into the directory of your choice and `cd graphql-on-rails`
 
-* Ruby version
+2. Execute `bundle install` to install gem dependencies
 
-* System dependencies
+3. With postgres already running, run `rails db:create && db:migrate && db:seed` or `rails db:setup` to initialize the db
 
-* Configuration
+4. Start the rails server and head over to 'localhost:3000/graphiql' to pull up the interactive GraphQL page.
 
-* Database creation
+5. Have fun! 😃
 
-* Database initialization
+### Ex. Queries
 
-* How to run the test suite
+##### Returns All Movies:
+`{
+  allMovies {
+    id
+    title
+    description
+  }
+}`
 
-* Services (job queues, cache servers, search engines, etc.)
+##### Returns All Movies with Associated Review:
+`{
+  allMovies {
+    id
+    title
+    description
+    reviews {
+      content
+    }
+  }
+}`
 
-* Deployment instructions
+##### Retrieve a Single Movie:
+`{
+  movie(id: 2) {
+    id
+    title
+  }
+}`
 
-* ...
+##### Create a New Movie:
+`mutation {
+  createMovie(
+    title: 'Inception',
+    description: 'Dreams within dreams...', rating: 4
+  )
+}`
