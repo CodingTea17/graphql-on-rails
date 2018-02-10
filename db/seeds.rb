@@ -9,3 +9,8 @@ Movie.create!(
   description: 'The backstory to the Lord of the Rings',
   rating: '4'
 )
+
+Review.create!(
+  content: 'Excellent amount of humor.',
+  movie_id: Movie.last.id
+)
